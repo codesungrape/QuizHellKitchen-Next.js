@@ -1,0 +1,18 @@
+@keyframes burn {
+    0% {
+      filter: brightness(100%) saturate(100%);
+      transform: scale(1);
+    }
+    50% {
+      filter: brightness(150%) saturate(150%);
+      transform: scale(1.1);
+    }
+    100% {
+      filter: brightness(100%) saturate(100%);
+      transform: scale(1);
+    }
+  }
+  
+  .animatedIcon {
+    animation: burn 2s infinite;
+  }
