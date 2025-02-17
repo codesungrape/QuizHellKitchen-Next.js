@@ -1,0 +1,42 @@
+/* Keyframe animation for burning effect */
+@keyframes fire {
+  0% {
+      text-shadow: 
+          0 0 5px rgba(255, 59, 48, 0.8), 
+          0 0 10px rgba(255, 59, 48, 0.8), 
+          0 0 15px rgba(255, 59, 48, 0.7), 
+          0 0 20px rgba(255, 87, 34, 1), 
+          0 0 25px rgba(255, 87, 34, 0.8);
+      color: #FFB700; 
+  }
+  50% {
+      text-shadow: 
+          0 0 5px rgba(255, 59, 48, 0.9), 
+          0 0 10px rgba(255, 59, 48, 0.9), 
+          0 0 15px rgba(255, 59, 48, 0.8), 
+          0 0 25px rgba(255, 87, 34, 1), 
+          0 0 30px rgba(255, 87, 34, 0.9);
+      color: #FF5A00; 
+  }
+  100% {
+      text-shadow: 
+          0 0 5px rgba(255, 59, 48, 0.8), 
+          0 0 15px rgba(255, 59, 48, 0.8), 
+          0 0 20px rgba(255, 87, 34, 1), 
+          0 0 25px rgba(255, 87, 34, 0.9), 
+          0 0 30px rgba(255, 87, 34, 0.8);
+      color: #FFB700; 
+  }
+}
+
+.fireText {
+  animation: fire 2s infinite;
+  color: #f80;
+  font-weight: 900;
+  font-size: 3rem;
+}
+
+
+.fireText:hover {
+  animation: fire 0.5s infinite;
+}
