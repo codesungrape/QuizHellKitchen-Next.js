@@ -28,4 +28,4 @@ jobs:
         run: npm run build
 
       - name: Docker Build
-        run: docker build -t quiz-hell-kitchen
+        run: docker build -t quiz-hell-kitchen .
