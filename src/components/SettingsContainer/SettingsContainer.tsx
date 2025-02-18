@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import { NativeSelect, Group } from '@mantine/core';
 
 export default function QuizSettings() {
@@ -18,7 +17,7 @@ export default function QuizSettings() {
             description="Click the drop-down menu for options" 
             data={[{ value: '', label: 'Choose a category' },'General Knowledge', 'Animals', 'Mythology']} 
         />
-        
+
         </Group>
     </div>
    )}

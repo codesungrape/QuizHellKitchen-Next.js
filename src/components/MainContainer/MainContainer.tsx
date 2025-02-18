@@ -37,7 +37,6 @@ export default function MainContainer() {
                 </button>
 
                 {/* Settings Section - will insert a quiz compoenent here */}
-                      {/* Difficulty Selection */}
                 <QuizSettings />
             </div>
         </div>
