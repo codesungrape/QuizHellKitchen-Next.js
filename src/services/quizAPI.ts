@@ -7,7 +7,7 @@ interface QuizParams {
     category: CategoryType;
 }
 
-interface TriviaQuestion {
+export interface TriviaQuestion {
     category: string;
     type: string;
     difficulty: string;

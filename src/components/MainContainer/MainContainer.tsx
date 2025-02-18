@@ -6,6 +6,8 @@ import QuizSettings from '../SettingsContainer/SettingsContainer';
 import { fetchQuizQuestions } from '@/services/quizAPI';
 import { DifficultyType, CategoryType } from '@/types/quiz';
 import styles from './MainContainer.module.css';
+import { TriviaQuestion } from '../../services/quizAPI';
+
 
 
 // Define initial states as valid types
@@ -16,7 +18,7 @@ export default function MainContainer() {
     const [showInstructions, setShowInstructions] = useState("How to Play");
     const [difficulty, setDifficulty] = useState<DifficultyType>(INITIAL_DIFFICULTY);
     const [category, setCategory] = useState<CategoryType>(INITIAL_CATEGORY);
-    const [questions, setQuestions] = useState(null);
+    const [questions, setQuestions] = useState<TriviaQuestion | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(false);
 
