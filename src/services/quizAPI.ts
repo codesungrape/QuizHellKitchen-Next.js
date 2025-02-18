@@ -7,9 +7,18 @@ interface QuizParams {
     category: CategoryType;
 }
 
+interface TriviaQuestion {
+    category: string;
+    type: string;
+    difficulty: string;
+    question: string;
+    correct_answer: string;
+    incorrect_answers: string[];
+}
+
 // Define a consistent return type interface
 export interface QuizApiResponse {
-    data: any | null;  // You can make this more specific based on your API response
+    data: TriviaQuestion | null;  // You can make this more specific based on your API response
     error: string | null;
 }
 
