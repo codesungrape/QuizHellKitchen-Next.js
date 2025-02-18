@@ -8,8 +8,17 @@ export default function QuizSettings() {
    return (
     <div className="settings-section">
         <Group >
-        <NativeSelect label="Choose Difficulty" description="Click the drop-down menu for options" data={['Easy', 'Medium', 'Hard']} />
-        {/* <NativeSelect label="Choose Difficulty" description="Click the drop-down menu for options" data={['Easy', 'Medium', 'Hard']} /> */}
+        <NativeSelect 
+            label="Select Difficulty" 
+            description="Click the drop-down menu for options" 
+            data={[{ value: '', label: 'Choose level' },'Easy', 'Medium', 'Hard']} 
+        />
+        <NativeSelect 
+            label="Select Category" 
+            description="Click the drop-down menu for options" 
+            data={[{ value: '', label: 'Choose a category' },'General Knowledge', 'Animals', 'Mythology']} 
+        />
+        
         </Group>
     </div>
    )}
