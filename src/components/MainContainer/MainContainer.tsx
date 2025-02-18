@@ -8,14 +8,20 @@ import QuizSettings from '../SettingsContainer/SettingsContainer';
 export default function MainContainer() {
     const [showInstructions, setShowInstructions] = useState("How to Play");
     const [difficulty, setDifficulty] = useState("Choose level")
+    const [category, setCategory] = useState("Choose category")
 
     // Optional: React to difficulty changes
     useEffect(() => {
-        if (difficulty) {
-            console.log(`Difficulty changed to: ${difficulty}`);
-            // Do something with the new difficulty value
+        if (difficulty !== "Choose level") {
+            console.log('Difficulty changed to:', difficulty);
         }
     }, [difficulty]);
+    
+    useEffect(() => {
+        if (category !== "Choose category") {
+            console.log('Category changed to:', category);
+        }
+    }, [category]);
 
     const handleInstructionsClick = () => {
         setShowInstructions(prev => 
@@ -45,7 +51,7 @@ export default function MainContainer() {
                 </button>
 
                 {/* Settings Section - will insert a quiz compoenent here */}
-                <QuizSettings onDifficultyChange={setDifficulty}  />
+                <QuizSettings onDifficultyChange={setDifficulty} onCategoryChange={setCategory}  />
             </div>
         </div>
     );

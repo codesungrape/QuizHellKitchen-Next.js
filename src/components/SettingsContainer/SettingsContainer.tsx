@@ -6,9 +6,10 @@ import styles from './SettingsContainer.module.css'
 // Define the props interface
 interface QuizSettingsProps {
     onDifficultyChange: (value: string) => void;
+    onCategoryChange: (value: string) => void;
 }
 
-export default function QuizSettings( {onDifficultyChange }: QuizSettingsProps ) {
+export default function QuizSettings( {onDifficultyChange, onCategoryChange }: QuizSettingsProps ) {
 
 
    return (
@@ -30,6 +31,7 @@ export default function QuizSettings( {onDifficultyChange }: QuizSettingsProps )
             classNames={{
                 description: styles.selectDescription
             }}
+            onChange={(e) => onCategoryChange(e.currentTarget.value)}
         />
 
         </Group>
