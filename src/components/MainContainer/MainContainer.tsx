@@ -39,9 +39,11 @@ export default function MainContainer() {
                 }
             }
             catch (err) {
-                setError("An unexpected error occured");
-            } finally {
-                setIsLoading(false);
+                if (err instanceof Error) {
+                    setError(`An unexpected error occurred: ${err.message}`);
+                } else {
+                    setError('An unexpected error occurred');
+                }
             }
         }
        }
