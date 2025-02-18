@@ -1,18 +1,15 @@
 import React from 'react';
+import { useState } from 'react';
+import { NativeSelect, Group } from '@mantine/core';
 
 export default function QuizSettings() {
 
 
-   return <div className="settings-section">
-        <label>Difficulty Level</label>
-        <div className="difficulty-buttons">
-        {(['easy', 'medium', 'hard'] as const).map((level: 'easy' | 'medium' | 'hard') => (
-            <button
-            key={level}
-            >
-            {level}
-            </button>
-        ))}
-        </div>
+   return (
+    <div className="settings-section">
+        <Group >
+        <NativeSelect label="Choose Difficulty" description="Click the drop-down menu for options" data={['Easy', 'Medium', 'Hard']} />
+        {/* <NativeSelect label="Choose Difficulty" description="Click the drop-down menu for options" data={['Easy', 'Medium', 'Hard']} /> */}
+        </Group>
     </div>
-}
+   )}
