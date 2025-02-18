@@ -1,13 +1,21 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChefHat, HelpCircle } from 'lucide-react';
 import styles from './MainContainer.module.css';
 import QuizSettings from '../SettingsContainer/SettingsContainer';
 
 export default function MainContainer() {
     const [showInstructions, setShowInstructions] = useState("How to Play");
+    const [difficulty, setDifficulty] = useState("Choose level")
 
+    // Optional: React to difficulty changes
+    useEffect(() => {
+        if (difficulty) {
+            console.log(`Difficulty changed to: ${difficulty}`);
+            // Do something with the new difficulty value
+        }
+    }, [difficulty]);
 
     const handleInstructionsClick = () => {
         setShowInstructions(prev => 
@@ -37,8 +45,10 @@ export default function MainContainer() {
                 </button>
 
                 {/* Settings Section - will insert a quiz compoenent here */}
-                <QuizSettings />
+                <QuizSettings onDifficultyChange={setDifficulty}  />
             </div>
         </div>
     );
 }
+
+
