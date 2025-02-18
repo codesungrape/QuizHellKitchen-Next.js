@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NativeSelect, Group } from '@mantine/core';
-import styles from './SettingsContainer.module.css'
+import styles from './SettingsContainer.module.css';
+import { DifficultyType, CategoryType } from '../../types/quiz'
 
 
 // Define the props interface
 interface QuizSettingsProps {
-    onDifficultyChange: (value: string) => void;
-    onCategoryChange: (value: string) => void;
+    onDifficultyChange: (value: DifficultyType) => void;
+    onCategoryChange: (value: CategoryType) => void;
+    difficulty: DifficultyType;
+    category: CategoryType;
 }
 
-export default function QuizSettings( {onDifficultyChange, onCategoryChange }: QuizSettingsProps ) {
+export default function QuizSettings( {
+    onDifficultyChange, 
+    onCategoryChange,
+    difficulty,
+    category,
+ }: QuizSettingsProps ) {
 
 
    return (
@@ -18,20 +26,25 @@ export default function QuizSettings( {onDifficultyChange, onCategoryChange }: Q
         <NativeSelect 
             label="Select Difficulty" 
             description="Click the drop-down menu for options" 
-            data={[{ value: '', label: 'Choose level' },'Easy', 'Medium', 'Hard']}
-            classNames={{
-                description: styles.selectDescription
-            }}
-            onChange={(e) => onDifficultyChange(e.currentTarget.value)}
+            data={ [
+                { value: 'Choose level', label: 'Choose level' },
+                { value: 'easy', label: 'Easy' },
+                { value: 'medium', label: 'Medium' },
+                { value: 'hard', label: 'Hard' }
+            ] }
+
+            onChange={(e) => onDifficultyChange(e.currentTarget.value as DifficultyType)}
         />
         <NativeSelect 
             label="Select Category" 
             description="Click the drop-down menu for options" 
-            data={[{ value: '', label: 'Choose a category' },'General Knowledge', 'Animals', 'Mythology']}
-            classNames={{
-                description: styles.selectDescription
-            }}
-            onChange={(e) => onCategoryChange(e.currentTarget.value)}
+            data={[
+                { value: 'Choose category', label: 'Choose category' },
+                { value: 'General Knowledge', label: 'General Knowledge' },
+                { value: 'Animals', label: 'Animals' },
+                { value: 'Mythology', label: 'Mythology' }
+            ]}
+            onChange={(e) => onCategoryChange(e.currentTarget.value as CategoryType)}
         />
 
         </Group>

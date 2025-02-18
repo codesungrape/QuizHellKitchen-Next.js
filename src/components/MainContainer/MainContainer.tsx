@@ -2,26 +2,51 @@
 
 import React, { useState, useEffect } from 'react';
 import { ChefHat, HelpCircle } from 'lucide-react';
-import styles from './MainContainer.module.css';
 import QuizSettings from '../SettingsContainer/SettingsContainer';
+import { fetchQuizQuestions } from '@/services/quizAPI';
+import { DifficultyType, CategoryType } from '@/types/quiz';
+import styles from './MainContainer.module.css';
+
+
+// Define initial states as valid types
+const INITIAL_DIFFICULTY: DifficultyType = 'Choose level';  // empty string as initial state
+const INITIAL_CATEGORY: CategoryType = 'Choose category'; 
 
 export default function MainContainer() {
     const [showInstructions, setShowInstructions] = useState("How to Play");
-    const [difficulty, setDifficulty] = useState("Choose level")
-    const [category, setCategory] = useState("Choose category")
+    const [difficulty, setDifficulty] = useState<DifficultyType>(INITIAL_DIFFICULTY);
+    const [category, setCategory] = useState<CategoryType>(INITIAL_CATEGORY);
+    const [questions, setQuestions] = useState(null);
+    const [error, setError] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     // Optional: React to difficulty changes
     useEffect(() => {
-        if (difficulty !== "Choose level") {
-            console.log('Difficulty changed to:', difficulty);
+       async function getQuestions() {
+        if (difficulty && category && difficulty !== 'Choose level' && category !== 'Choose category') {
+            setIsLoading(true);
+            setError(null);
+
+            try {
+                const { data, error } = await fetchQuizQuestions({ 
+                    difficulty: difficulty as DifficultyType, 
+                    category: category as CategoryType 
+                });
+                if (error) {
+                    setError(error);
+                } else {
+                    setQuestions(data);
+                }
+            }
+            catch (error) {
+                setError("An unexpected error occured");
+            } finally {
+                setIsLoading(false);
+            }
         }
-    }, [difficulty]);
-    
-    useEffect(() => {
-        if (category !== "Choose category") {
-            console.log('Category changed to:', category);
-        }
-    }, [category]);
+       }
+       getQuestions()
+    }, [difficulty, category]);
 
     const handleInstructionsClick = () => {
         setShowInstructions(prev => 
@@ -51,10 +76,16 @@ export default function MainContainer() {
                 </button>
 
                 {/* Settings Section - will insert a quiz compoenent here */}
-                <QuizSettings onDifficultyChange={setDifficulty} onCategoryChange={setCategory}  />
+                <QuizSettings 
+                    difficulty={difficulty}
+                    category={category}
+                    onDifficultyChange={setDifficulty}
+                    onCategoryChange={setCategory}  
+                />
             </div>
         </div>
     );
 }
+
 
 
