@@ -33,7 +33,7 @@ export async function fetchQuizQuestions({ difficulty, category }: QuizParams) :
         }
         return { data: null, error: "Failed to fetch questions" };
     }
-    catch( error) {
-        throw new Error("Network error!")
+    catch(err) {
+        throw new Error( err instanceof Error ? err.message : "Network error!")
     }
 }

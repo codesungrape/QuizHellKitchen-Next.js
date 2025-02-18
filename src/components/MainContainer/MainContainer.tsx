@@ -28,17 +28,17 @@ export default function MainContainer() {
             setError(null);
 
             try {
-                const { data, error } = await fetchQuizQuestions({ 
+                const { data, error: apiError } = await fetchQuizQuestions({ 
                     difficulty: difficulty as DifficultyType, 
                     category: category as CategoryType 
                 });
-                if (error) {
-                    setError(error);
+                if (apiError) {
+                    setError(apiError);
                 } else {
                     setQuestions(data);
                 }
             }
-            catch (error) {
+            catch (err) {
                 setError("An unexpected error occured");
             } finally {
                 setIsLoading(false);
