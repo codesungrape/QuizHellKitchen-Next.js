@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { ChefHat, Settings, HelpCircle } from 'lucide-react';
 import styles from './MainContainer.module.css';
+import QuizSettings from '../SettingsContainer/SettingsContainer';
 
 export default function MainContainer() {
     const [showInstructions, setShowInstructions] = useState("How to Play");
@@ -35,24 +36,9 @@ export default function MainContainer() {
                     <span>{showInstructions}</span>
                 </button>
 
-                {/* Settings Section */}
-                <div className={styles.settingsSection}>
-                    <button 
-                        className={styles.settingsButton}
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        aria-expanded={isMenuOpen}
-                    >
-                        <Settings className={styles.settingsIcon} />
-                    </button>
-                    
-                    {isMenuOpen && (
-                        <div className={styles.menuDropdown}>
-                            <div className={styles.menuLabel}>Quiz Options</div>
-                            <button className={styles.menuItem}>Difficulty Level</button>
-                            <button className={styles.menuItem}>Time Limits</button>
-                        </div>
-                    )}
-                </div>
+                {/* Settings Section - will insert a quiz compoenent here */}
+                      {/* Difficulty Selection */}
+                <QuizSettings />
             </div>
         </div>
     );
