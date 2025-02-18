@@ -1,13 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ChefHat, Settings, HelpCircle } from 'lucide-react';
+import { ChefHat, HelpCircle } from 'lucide-react';
 import styles from './MainContainer.module.css';
 import QuizSettings from '../SettingsContainer/SettingsContainer';
 
 export default function MainContainer() {
     const [showInstructions, setShowInstructions] = useState("How to Play");
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
 
     const handleInstructionsClick = () => {
         setShowInstructions(prev => 
