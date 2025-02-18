@@ -25,6 +25,7 @@ export default function QuizSettings( {
         <Group className={styles.container}>
         <NativeSelect 
             label="Select Difficulty" 
+            value={difficulty}
             description="Click the drop-down menu for options" 
             data={ [
                 { value: 'Choose level', label: 'Choose level' },
@@ -37,6 +38,7 @@ export default function QuizSettings( {
         />
         <NativeSelect 
             label="Select Category" 
+            value={category}
             description="Click the drop-down menu for options" 
             data={[
                 { value: 'Choose category', label: 'Choose category' },

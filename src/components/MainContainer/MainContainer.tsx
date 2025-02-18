@@ -65,6 +65,23 @@ export default function MainContainer() {
                         <ChefHat size={40} />
                     </div>
                 </div>
+                   {/* Show loading state */}
+                {isLoading && <div>Loading questions...</div>}
+                
+                {/* Show error if exists */}
+                {error && (
+                    <div className={styles.error}>
+                        {error}
+                    </div>
+                )}
+                 {/* Show questions when loaded */}
+                {questions && (
+                    <div>
+                        {/* You can map through questions here */}
+                        {/* This will remove the 'never used' warning */}
+                    </div>
+                )}
+
 
                 {/* Instructions Button */}
                 <button 
